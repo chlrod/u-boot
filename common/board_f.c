@@ -713,6 +713,7 @@ static int setup_reloc(void)
 		gd->reloc_off = gd->relocaddr - CONFIG_TEXT_BASE;
 #endif
 #endif
+		debug("new reloc_off = %08lx\n", gd->reloc_off);
 	}
 
 	memcpy(gd->new_gd, (char *)gd, sizeof(gd_t));

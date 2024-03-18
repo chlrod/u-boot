@@ -1,0 +1,15 @@
+if TARGET_ZEROCORE_FBOARD
+
+config SYS_CPU
+    default "generic"
+
+config SYS_BOARD
+	default "fboard"
+
+config SYS_VENDOR
+	default "zerocore"
+
+config SYS_CONFIG_NAME
+	default "fboard"
+
+endif

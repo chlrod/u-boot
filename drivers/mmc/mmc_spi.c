@@ -109,9 +109,10 @@ static int mmc_spi_sendcmd(struct udevice *dev,
 	cmdo[5] = cmdarg;
 	cmdo[6] = (crc7(0, &cmdo[1], 5) << 1) | 0x01;
 	ret = dm_spi_xfer(dev, sizeof(cmdo) * 8, cmdo, NULL, SPI_XFER_BEGIN);
-	if (ret)
+	if (ret) {
+		debug("%d",ret);
 		return ret;
-
+	}
 	ret = dm_spi_xfer(dev, 1 * 8, NULL, &r, 0);
 	if (ret)
 		return ret;
@@ -463,7 +464,7 @@ static int mmc_spi_probe(struct udevice *dev)
 	if (!name)
 		return -ENOMEM;
 	sprintf(name, "%s:%s", dev->parent->name, dev->name);
-
+	
 	plat->cfg.name = name;
 	plat->cfg.host_caps = MMC_MODE_SPI;
 	plat->cfg.voltages = MMC_SPI_VOLTAGE;

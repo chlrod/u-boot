@@ -90,7 +90,6 @@ uint64_t notrace get_ticks(void)
 
 	if (!gd->timer) {
 		int ret;
-
 		if (IS_ENABLED(CONFIG_TIMER_EARLY))
 			return timer_early_get_count();
 

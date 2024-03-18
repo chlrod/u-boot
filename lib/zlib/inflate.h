@@ -18,24 +18,24 @@
 
 /* Possible inflate modes between inflate() calls */
 typedef enum {
-    HEAD,       /* i: waiting for magic header */
-    FLAGS,      /* i: waiting for method and flags (gzip) */
-    TIME,       /* i: waiting for modification time (gzip) */
-    OS,         /* i: waiting for extra flags and operating system (gzip) */
-    EXLEN,      /* i: waiting for extra length (gzip) */
-    EXTRA,      /* i: waiting for extra bytes (gzip) */
-    NAME,       /* i: waiting for end of file name (gzip) */
-    COMMENT,    /* i: waiting for end of comment (gzip) */
-    HCRC,       /* i: waiting for header crc (gzip) */
-    DICTID,     /* i: waiting for dictionary check value */
-    DICT,       /* waiting for inflateSetDictionary() call */
-        TYPE,       /* i: waiting for type bits, including last-flag bit */
-        TYPEDO,     /* i: same, but skip check to exit inflate on new block */
-        STORED,     /* i: waiting for stored size (length and complement) */
-        COPY,       /* i/o: waiting for input or output to copy stored block */
-        TABLE,      /* i: waiting for dynamic block table lengths */
-        LENLENS,    /* i: waiting for code length code lengths */
-        CODELENS,   /* i: waiting for length/lit and distance code lengths */
+    HEAD,       /* 0 i: waiting for magic header */
+    FLAGS,      /* 1 i: waiting for method and flags (gzip) */
+    TIME,       /* 2 i: waiting for modification time (gzip) */
+    OS,         /* 3 i: waiting for extra flags and operating system (gzip) */
+    EXLEN,      /* 4 i: waiting for extra length (gzip) */
+    EXTRA,      /* 5 i: waiting for extra bytes (gzip) */
+    NAME,       /* 6 i: waiting for end of file name (gzip) */
+    COMMENT,    /* 7 i: waiting for end of comment (gzip) */
+    HCRC,       /* 8 i: waiting for header crc (gzip) */
+    DICTID,     /* 9 i: waiting for dictionary check value */
+    DICT,       /* 10 waiting for inflateSetDictionary() call */
+        TYPE,       /* 11 i: waiting for type bits, including last-flag bit */
+        TYPEDO,     /* 12 i: same, but skip check to exit inflate on new block */
+        STORED,     /* 13 i: waiting for stored size (length and complement) */
+        COPY,       /* 14 i/o: waiting for input or output to copy stored block */
+        TABLE,      /* 15 i: waiting for dynamic block table lengths */
+        LENLENS,    /* 16 i: waiting for code length code lengths */
+        CODELENS,   /* 17 i: waiting for length/lit and distance code lengths */
             LEN,        /* i: waiting for length/lit code */
             LENEXT,     /* i: waiting for length extra bits */
             DIST,       /* i: waiting for distance code */

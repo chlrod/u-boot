@@ -356,7 +356,8 @@ int ZEXPORT inflate(z_streamp strm, int flush)
     in = have;
     out = left;
     ret = Z_OK;
-    for (;;)
+    for (;;) {
+        printf("inflate state mode: %d\n", state->mode);
         switch (state->mode) {
         case HEAD:
             if (state->wrap == 0) {
@@ -898,7 +899,7 @@ int ZEXPORT inflate(z_streamp strm, int flush)
         default:
             return Z_STREAM_ERROR;
         }
-
+    }
     /*
        Return from inflate(), updating the total counts and the check value.
        If there was no progress during the inflate() call, return a buffer
@@ -906,6 +907,7 @@ int ZEXPORT inflate(z_streamp strm, int flush)
        Note: a memory error from inflate() is non-recoverable.
      */
   inf_leave:
+    printf("inflate msg: %s\n",strm->msg);
     RESTORE();
     if (state->wsize || (state->mode < CHECK && out != strm->avail_out))
         if (updatewindow(strm, out)) {
